@@ -41,7 +41,6 @@ const goods = [
     { title: 'Shoes', price: 250 },
 ];
 
-/*сокращение*/
 const renderGoodsItem = (title = "Item", price = 0) => `<div class="goods-item"><h3 class="goods-item-header">${title}</h3><p class="goods-item-price">${price}</p></div>`;
   
 const renderGoodsList = (list) => {
