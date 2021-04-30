@@ -6,26 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" defer></script>
-    <script src="js/script.js" defer></script>
     <title>eShop</title>
 </head>
-<body id="app" class="site">
-    <header class="site-header">
-        <input type="text" class="header-search">
-        <button class="search-button">Найти</button>
-        <button class="cart-button" type="button">Корзина</button>
-    </header>
-    <main class="site-content container">
-        <div class="goods-list">
-            <div class="goods-items">
-                <h3>{{ good.product_name }}</h3>
-                <p>{{ good.price }}</p>
+<body class="site">
+    <div id="app">
+        <header class="site-header">
+            <div class="header-form">
+                <input v-model="searchLine" type="text" class="header-search">
+                <button v-on:click="filterGoods" class="search-button">Найти</button>
             </div>
-        </div>
-    </main>
-    <footer class="site-footer">
-        <span class="site-foote-copy">js2 &copy; 2021</span>
-    </footer>
+            <button @click="handelCart" class="cart-button" type="button">Корзина</button>
+        </header>
+        <main class="site-content container">
+            <div class="goods-list">
+                <div class="goods-item" v-for="good in filteredGoods">
+                    <h3>{{ good.product_name }}</h3>
+                    <p>{{ good.price }}</p>
+                </div>
+            </div>
+            <div v-show="isVisibleCart" class="content-cart">
+                корзина
+            </div>
+        </main>
+        <footer class="site-footer">
+            <span class="site-foote-copy">js2 &copy; 2021</span>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

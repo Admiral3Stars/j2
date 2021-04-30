@@ -13,6 +13,12 @@
     box-sizing: border-box;
 }
 
+.header-form{
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
 .cart-button{
     display: block;
     padding: 3px 6px;
@@ -61,6 +67,16 @@
 
 .goods-item-price::after{
     content: " ₽";
+}
+
+.content-cart{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 50px;
+    box-sizing: border-box;
+    border: 1px dashed blue;
+    border-radius: 10px;
 }
 
 .site-footer{
