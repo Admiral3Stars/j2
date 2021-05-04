@@ -1,0 +1,25 @@
+{
+  "name": "admiral",
+  "version": "1.0.0",
+  "description": "my first json",
+  "main": "admiral.js",
+  "scripts": {
+    "test": "console.log(5);"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Admiral3Stars/j2.git"
+  },
+  "keywords": [
+    "abc"
+  ],
+  "author": "I",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Admiral3Stars/j2/issues"
+  },
+  "homepage": "https://github.com/Admiral3Stars/j2#readme",
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
+}
