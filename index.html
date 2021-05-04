@@ -12,10 +12,12 @@
     <div id="app">
         <header class="site-header">
             <div class="header-form">
-                <input v-model="searchLine" type="text" class="header-search">
-                <button v-on:click="filterGoods" class="search-button">Найти</button>
+                <search v-model="searchLine" v-on:input="filterGoods"></search>
+                <!-- <input v-model="searchLine" type="text" class="header-search">
+                <button v-on:click="filterGoods" class="search-button">Найти</button> -->
             </div>
-            <button @click="handelCart" class="cart-button" type="button">Корзина</button>
+            <cart></cart>
+            <!-- <button @click="handelCart" class="cart-button" type="button">Корзина</button> -->
         </header>
         <main class="site-content container">
             <div class="goods-list">
@@ -34,5 +36,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/components.js"></script>
 </body>
 </html>
