@@ -2,31 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>eShop</title>
-    <link rel="stylesheet" href="../dist/css/stylevue.css">
-    <script defer src="vue.min.js"></script>
-    <script defer src="script.js"></script>
 </head>
-<body>
+<body class="site">
     <div id="app">
-        <header>
-            <div class="container">
-                <search></search>
-                <button class="cart-button" v-bind:class="{activebutton: isVisibleCart}" v-on:click="viewCart">Корзина<span>{{totalPriceCoin}}</span></button>
-            </div>
+        <header class="site-header">
+            <goods-search v-model="searchLine" @filter-goods="filterGoods"></goods-search>
+            <cart :delete-from-cart="deleteGoodFromCart" :goods="cartGoods"></cart>
         </header>
-        <main class="container">
-            <goods-list :goods="filteredGoods">
-                <template v-slot:title><h2>Товары в продаже</h2></template>
-                <template v-slot:nothing v-if="filteredGoods.length == 0"><h3 class="goods-null">Нет данных / Товары не найдены</h3></template>
-            </goods-list>
-
-            <basket-list :goods="basketGoods" v-bind:class="{ active: isVisibleCart }">
-                <template v-slot:title><h2>Корзина</h2></template>
-                <template v-slot:totalCart><small class="totalCart">{{totalPriceMessage}}</small></template>
-            </basket-list>
+        <main class="site-content container">
+            <goods-list :add-to-cart="addGoodToCart" :goods="filteredGoods"></goods-list>
         </main>
+        <footer class="site-footer">
+            <span class="site-foote-copy">js2 &copy; 2021</span>
+        </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/script.js"></script>
+    <script src="dist/components.js"></script>
 </body>
 </html>
