@@ -1,24 +1,27 @@
 {
-  "name": "js-next",
+  "name": "admiral",
   "version": "1.0.0",
-  "description": "- [X] 1. Добавьте стили для верхнего меню, товара, списка товаров и кнопки вызова корзины.\r - [X] 2. Добавьте значения по умолчанию для аргументов функции. Как можно упростить или сократить запись функций?\r - [X] 3. Сейчас после каждого товара на странице выводится запятая. Из-за чего это происходит? Как это исправить?",
-  "main": "index.js",
+  "description": "my first json",
+  "main": "admiral.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "console.log(5);"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anatolykulikov/js-next.git"
+    "url": "git+https://github.com/Admiral3Stars/j2.git"
   },
-  "author": "",
+  "keywords": [
+    "abc"
+  ],
+  "author": "I",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anatolykulikov/js-next/issues"
+    "url": "https://github.com/Admiral3Stars/j2/issues"
   },
-  "homepage": "https://github.com/anatolykulikov/js-next#readme",
+  "homepage": "https://github.com/Admiral3Stars/j2#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-static": "^0.7.11"
   }
 }

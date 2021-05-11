@@ -1,62 +1,73 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+var cors = require('cors')
 
 const app = express();
 
 app.use(express.static('.'));
-app.use(bodyParser.json());
+app.use(bodyParser.json())
+app.use(cors())
 
-// Get-запрос на получение информации о товарах
-app.get('/catalog', (req, res) => {
-    fs.readFile('response.json', 'utf-8', (err, data) => {
-        res.send(data);
-    });
-});
-// Get-запрос на получение информации о корзине
-app.get('/cart', (req, res) => {
-    fs.readFile('cart.json', 'utf-8', (err, data) => {
-        res.send(data);
-    });
-});
-// Post-запрос на получение информации о корзине
-app.post('/addToCard', (req, res) => {
-    fs.readFile('cart.json', 'utf-8', (err, data) => {
-        if(err) {
-            res.send('{"result": 0}');
+app.get('/catalogData', (req, res) => {
+  fs.readFile('./base/catalog.json', 'utf8', (err, data) => {
+    res.send(data)
+  })
+})
+
+app.get('/cartData', (req, res) => {
+  fs.readFile('./base/cart.json', 'utf8', (err, data) => {
+    res.send(data)
+  })
+})
+
+app.post('/deleteFromCart', (req, res) => {
+  fs.readFile('./base/cart.json', 'utf8', (err, data) => {
+    if (err) {
+      res.send('{"result": 0}');
+    } else {
+      let cart = JSON.parse(data);
+      const item = req.body;
+
+      cart = cart.filter((good) => good.product_name !== item.product_name);
+      
+      fs.writeFile('./base/cart.json', JSON.stringify(cart), (err) => {
+        if (err) {
+          res.send('{"result": 0}');
+        } else {
+          res.send('{"result": 1}');
         }
-        const cart = JSON.parse(data);
-        const item = req.body;
-        cart.push(item);
-        fs.writeFile('cart.json', JSON.stringify(cart), (err) => {
-            if(err) {
-                res.send('{"result": 0}');
-            } else {
-                res.send('{"result": 1}');
-            }
-            // console.log('Скрипт выполнен: товар добавлен в массив');
-        });
-    });
-});
-// Post-запрос на получение информации о корзине
-app.post('/updateCart', (req, res) => {
-    fs.readFile('cart.json', 'utf-8', (err, data) => {
-        if(err) {
-            res.send('{"result": 0}');
-        }
-        const cart = req.body;
-        fs.writeFile('cart.json', JSON.stringify(cart), (err) => {
-            if(err) {
-                res.send('{"result": 0}');
-            } else {
-                res.send('{"result": 1}');
-            }
-            // console.log('Скрипт выполнен: товар добавлен в массив');
-        });
-    });
+      });
+    }
+  });
 });
 
+app.post('/addToCart', (req, res) => {
+  fs.readFile('./base/cart.json', 'utf8', (err, data) => {
+    if (err) {
+      res.send('{"result": 0}');
+    } else {
+      const cart = JSON.parse(data);
+      const item = req.body;
+      const hasItem = cart.find((good) => good.product_name === item.product_name);
+
+      if (hasItem) {
+        res.send('{"result": 1}');
+        return;
+      }
+
+      cart.push(item);
+      fs.writeFile('./base/cart.json', JSON.stringify(cart), (err) => {
+        if (err) {
+          res.send('{"result": 0}');
+        } else {
+          res.send('{"result": 1}');
+        }
+      });
+    }
+  });
+});
 
 app.listen(3000, function() {
-    console.log('Сервер запущен');
+  console.log('server is running on port 3000!');
 });

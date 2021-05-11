@@ -1,0 +1,89 @@
+.site{
+    width: 100%;
+    font-family: serif;
+    font-size: 16px;
+}
+
+.site-header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    border-bottom: 1px dashed blue;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.header-form{
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-button{
+    display: block;
+    padding: 3px 6px;
+    color: white;
+    background-color: blueviolet;
+    border: 1px solid blue;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.cart-button:hover{
+    background-color: blue;
+}
+
+.cart-button:active{
+    background-color: blueviolet;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.goods-list{
+    margin: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.goods-item{
+    margin: 5px;
+    width: 200px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px dashed blue;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.goods-item-header, .goods-item-price{
+    margin: 0;
+}
+
+.goods-item-price::after{
+    content: " ₽";
+}
+
+.cart{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 50px;
+    box-sizing: border-box;
+    border: 1px dashed blue;
+    border-radius: 10px;
+}
+
+.site-footer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    border-top: 1px dashed blue;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
